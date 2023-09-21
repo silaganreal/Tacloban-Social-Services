@@ -44,7 +44,7 @@ switch ($action)
 
 
 	case "sampleAction":
-	    echo "Hello Sample Action! From Local Machine...";
+	    echo "Hello Sample Action! From LM...";
         break;
 
 //------------------------------------------------------------------------------------------------------------------------------------
