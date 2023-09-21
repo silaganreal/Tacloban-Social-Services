@@ -16,15 +16,15 @@ switch ($action)
 {
     	case "checkServer":
         print json_encode("connected");
-    	break; 
+    	break;
 
     	case "CountRecords":
         $q = mysqli_query($con,"SELECT * FROM clients");
         $count = mysqli_num_rows($q);
         print json_encode($count);
         break;
- 
-  
+
+
 	case "viewclients":
 	$q = mysqli_query($con,"SELECT id,fname,mname,lname,barangay, stat FROM clients WHERE stat = 0 ORDER by id LIMIT 50");
         $rows = array();
@@ -44,10 +44,10 @@ switch ($action)
 
 
 	case "sampleAction":
-	echo "Hello Sample Action";
+	echo "Hello Sample Action!";
 
 //------------------------------------------------------------------------------------------------------------------------------------
- 
+
 }
 
 
