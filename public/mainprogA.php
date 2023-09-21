@@ -14,11 +14,11 @@ $action = $_GET["action"];
 switch ($action)
 
 {
-    	case "checkServer":
+    case "checkServer":
         print json_encode("connected");
     	break;
 
-    	case "CountRecords":
+    case "CountRecords":
         $q = mysqli_query($con,"SELECT * FROM clients");
         $count = mysqli_num_rows($q);
         print json_encode($count);
@@ -26,7 +26,7 @@ switch ($action)
 
 
 	case "viewclients":
-	$q = mysqli_query($con,"SELECT id,fname,mname,lname,barangay, stat FROM clients WHERE stat = 0 ORDER by id LIMIT 50");
+	    $q = mysqli_query($con,"SELECT id,fname,mname,lname,barangay, stat FROM clients WHERE stat = 0 ORDER by id LIMIT 50");
         $rows = array();
 
         while($r = mysqli_fetch_assoc($q))
@@ -34,17 +34,18 @@ switch ($action)
             $rows[] = $r;
         }
         print json_encode($rows);
-	break;
+	    break;
 
-    	case "updateclient":
+    case "updateclient":
         $id = $_GET["id"];
         $clientid = $_GET["clientid"];
         $q = mysqli_query($con,"UPDATE clients SET stat = 1, clientid = '$clientid' WHERE id = '$id'");
-	break;
+	    break;
 
 
 	case "sampleAction":
-	echo "Hello Sample Action!";
+	    echo "Hello Sample Action! Edit from local machine...";
+        break;
 
 //------------------------------------------------------------------------------------------------------------------------------------
 
