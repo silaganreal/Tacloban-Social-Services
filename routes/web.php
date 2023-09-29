@@ -46,6 +46,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('printClient/{id}', [ClientController::class, 'printClient']);
     Route::get('printBCfindings/{id}', [ClientController::class, 'printBCfindings']);
     Route::post('addIndigency', [ClientController::class, 'addIndigency']);
+    Route::post('editIndigency/{id}', [ClientController::class, 'editIndigency']);
     Route::get('client-logs', [ClientController::class, 'client_logs']);
     Route::get('filter-logs', [ClientController::class, 'filterLogs']);
 });

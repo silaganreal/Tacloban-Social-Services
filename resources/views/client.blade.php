@@ -490,7 +490,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Assissted By</label>
-                                        <input type="text" name="assisstedBy" class="form-control" placeholder="Assissted By" required>
+                                        <input type="text" name="assisstedBy" class="form-control" value="{{ Auth::user()->user_name }}" required>
                                     </div>
                                 </div>
                             </div>
@@ -643,8 +643,68 @@
                                                     <td>{{ $indigency->servicesToAvail }}</td>
                                                     <td>{{ $indigency->financialAmount }}</td>
                                                     <td>{{ $indigency->assisstedBy }}</td>
-                                                    <td>
+                                                    <td style="display:flex;flex-direction:row;gap:4px;">
                                                         <a href="{{ url('printClient/'.$indigency->id) }}" class="btn btn-sm btn-info">Print</a>
+                                                        <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#indID{{ $indigency->id }}">Edit</button>
+                                                        {{-- modal edit indigency start --}}
+                                                        <div class="modal fade" id="indID{{ $indigency->id }}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-hidden="true">
+                                                            <div class="modal-dialog modal-lg">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header alert alert-primary">
+                                                                        <h5 class="modal-title" id="staticBackdropLabel">Edit Indigency - {{ $fullname }}</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <form action="{{ url('editIndigency/'.$indigency->id) }}" method="post">
+                                                                            @csrf
+                                                                            <div class="row mb-1">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label>Source of Income</label>
+                                                                                        <input type="text" name="sourceIncome" class="form-control" value="{{ $indigency->sourceOfIncome }}" required>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label>Total Family Income</label>
+                                                                                        <input type="number" name="income" class="form-control" value="{{ $indigency->totalFamilyIncome }}" required>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label>Needs</label>
+                                                                                        <input type="text" name="needs" class="form-control" value="{{ $indigency->needs }}" required>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label>Services Offered</label>
+                                                                                        <input type="text" name="services" class="form-control" value="{{ $indigency->servicesToAvail }}" required>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label>Financial Assisstance</label>
+                                                                                        <input type="number" name="financialAmount" class="form-control" value="{{ $indigency->financialAmount }}" required>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label>Brief case findings/Social Case Study Report Dated</label>
+                                                                                        <input type="date" name="bcfscsr" class="form-control" value="{{ $indigency->bcfscsr }}" required>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label>Assissted By</label>
+                                                                                        <input type="text" name="assisstedBy" class="form-control" value="{{ Auth::user()->user_name }}" required>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <input type="hidden" name="indigencyClientID" value="{{ $client->id }}">
+                                                                            <input type="hidden" name="type" id="type" value="{{ Auth::user()->name }}">
+                                                                            <button type="submit" class="btn btn-sm btn-primary" onclick="return confirm('Are all the info entered correct?')">Submit</button>
+                                                                        </form>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        {{-- modal edit indigency end --}}
                                                     </td>
                                                 </tr>
                                                 @endforeach

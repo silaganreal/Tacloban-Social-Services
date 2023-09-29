@@ -464,6 +464,28 @@ class ClientController extends Controller
         }
     }
 
+    public function editIndigency(Request $request, $id) {
+        $updatedIndigency = DB::table('indigency')
+        ->where('id', $id)
+        ->update([
+            'sourceOfIncome' => $request->sourceIncome,
+            'totalFamilyIncome' => $request->income,
+            'needs' => $request->needs,
+            'servicesToAvail' => $request->services,
+            'financialAmount' => $request->financialAmount,
+            'bcfscsr' => $request->bcfscsr,
+            'assisstedBy' => $request->assisstedBy,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+        ]);
+
+        if($updatedIndigency > 0) {
+            return back()->with('mtrue', 'Indigency has been updated!');
+        } else {
+            return back()->with('mfalse', 'Fail! Error updating Indigency!');
+        }
+    }
+
     public function client_logs() {
         $logs = DB::table('histories')
         ->leftJoin('clients', 'histories.clientID', '=', 'clients.id')

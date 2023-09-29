@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en" >
 
@@ -31,7 +29,7 @@
                     @csrf
                     <div class="form-group">
                         <label>Username</label>
-                        <!-- <input type="email" name="email" id="email" :value="old('email')" required autofocus/> -->
+                        {{-- <input type="email" name="email" id="email" :value="old('email')" required autofocus/> --}}
                         <input type="text" name="username" id="username" :value="old('username')" required autofocus/>
                         <x-input-error :messages="$errors->get('username')" class="mt-2" />
                     </div>
@@ -40,16 +38,16 @@
                         <input type="password" name="password" id="password" required autocomplete="current-password"/>
                         <x-input-error :messages="$errors->get('password')" class="mt-2" />
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label class="form-remember">
                         <input type="checkbox" name="remember" id="remember_me" />Remember Me
                         &nbsp;&nbsp;
-                        {{-- @if (Route::has('password.request'))
+                        @if (Route::has('password.request'))
                             <a class="form-recovery" href="{{ route('password.request') }}">
                                 {{ __('Forgot your password?') }}
                             </a>
-                        @endif --}}
-                    </div>
+                        @endif
+                    </div> --}}
                     <div class="form-group">
                         <button type="submit">Log In</button>
                     </div>
