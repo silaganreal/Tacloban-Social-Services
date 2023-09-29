@@ -12,12 +12,12 @@
 @endsection
 
 @section('navlink')
-<?php
-    $link_clients = 'active';
-    $link_medicines = '';
-    $link_household = '';
-    $link_logs = '';
-?>
+    <?php
+        $link_clients = 'active';
+        $link_medicines = '';
+        $link_household = '';
+        $link_logs = '';
+    ?>
 @endsection
 
 @section('content')
@@ -241,7 +241,7 @@
                                             </td>
                                             <td>{{ $client->memberCount }}</td>
                                             <td style="text-align:right;padding-right:20px;">
-                                                @if(Auth::user()->accountType == 'cswdo' || Auth::user()->accountType == 'admin')
+                                                @if(Auth::user()->accountType == 'cswdo' || Auth::user()->accountType == 'admin' || Auth::user()->accountType == 'masa')
                                                     @if ($client->householdID == '')
                                                     <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#makeMember{{ $cID }}">Household</button>
                                                     {{-- modal Make Member start --}}
