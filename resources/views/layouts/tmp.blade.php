@@ -89,7 +89,7 @@
                                 </a>
                             </li>
                         @endif
-                        @if (Auth::user()->accountType == 'admin' || Auth::user()->accountType == 'cswdo')
+                        @if (Auth::user()->accountType == 'admin' || Auth::user()->accountType == 'cswdo' || Auth::user()->accountType == 'masa')
                             <li class="nav-item">
                                 <a href="{{ url('/household') }}" class="nav-link <?php echo $link_household; ?>">
                                     <i class="nav-icon fas fa-house-user"></i>
