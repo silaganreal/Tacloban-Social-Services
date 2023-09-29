@@ -235,7 +235,7 @@
                                                 </td>
                                                 <td>{{ $client->memberCount }}</td>
                                                 <td style="text-align:right;padding-right:20px;">
-                                                    @if(Auth::user()->accountType == 'admin' || Auth::user()->accountType == 'cswdo')
+                                                    @if(Auth::user()->accountType == 'admin' || Auth::user()->accountType == 'cswdo' || Auth::user()->accountType == 'masa')
                                                         @if ($client->householdID == '')
                                                             <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#makeMember{{ $cID }}">Household</button>
                                                             {{-- modal Make Member start --}}
