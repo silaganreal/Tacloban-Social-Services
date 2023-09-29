@@ -94,8 +94,12 @@
                                         </select>
                                     </div>
                                     @endif
-                                    @if (Auth::user()->accountType == 'cswdo')
-                                        <input type="hidden" name="office" id="sel_office" value="CSWDO">
+                                    @if (Auth::user()->accountType == 'cswdo' || Auth::user()->accountType == 'masa')
+                                        @if (Auth::user()->accountType == 'cswdo')
+                                            <input type="hidden" name="office" id="sel_office" value="CSWDO">
+                                        @elseif (Auth::user()->accountType == 'masa')
+                                            <input type="hidden" name="office" id="sel_office" value="MASA">
+                                        @endif
                                         <div class="form-group">
                                             <label>Service</label>
                                             <select name="service" id="sel_service" class="form-control" required>
